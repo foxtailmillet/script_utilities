@@ -1,0 +1,50 @@
+function mement() {
+  no="$1"
+  if [ "" == "$1" ]; then
+    _show_dir
+  else
+    _goto_dir "$no"
+  fi
+}
+
+function _show_dir() {
+  #cat ~/.mementdir.txt
+  index=1
+  while read line
+  do
+    display_index="00${index}"
+    display_index="${display_index:-3}"
+    echo "$display_index: $line"
+    index=`echo $((index+1))`
+  done < ~/.mementdir.txt
+}
+
+function _goto_dir() {
+  no="$1"
+  index=1
+  goto_dir=""
+  while read line
+  do
+    if [ "$no" == "$index" ]; then
+      goto_dir="$line"
+      break
+    fi
+    index=`echo $((index+1))`
+  done < ~/.mementdir.txt
+
+  if [ "$goto_dir" == "" ]; then
+   echo "no: [$no] is illegal!!"
+  else
+    echo "go to [$goto_dir]."
+    cd $goto_dir
+  fi
+}
+
+function stash() {
+  crd=`pwd`
+  echo $crd >> ~/.mementdir.txt
+
+  echo "add current dir to mement."
+  echo "[$crd]"
+}
+
