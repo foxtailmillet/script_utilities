@@ -1,0 +1,8 @@
+# userの場合
+alias sps='sudo docker ps --format "table {{.Names}}\t{{.Status}}\t{{.ID}}\t{{.Image}}"'
+alias simage='sudo docker images --format "{{.ID}}\t【{{.Repository}}:{{.Tag}}}】({{.Size}})"'
+
+# rootの場合
+alias sps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.ID}}\t{{.Image}}"'
+alias simage='docker images --format "{{.ID}}\t【{{.Repository}}:{{.Tag}}}】({{.Size}})"'
+
