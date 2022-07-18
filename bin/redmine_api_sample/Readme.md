@@ -86,3 +86,43 @@
     - 念のため一度リセットしてから使用したほうが良い。
         - 「APIアクセスキーが見つかりません (リセット)」 のリセットがリンクになっているので押下すればリセットされる。
 
+## API Sample
+
+### 検索
++ ticket_one_json.sh
+    - 1チケットの内容を全て出力
+        - 第1引数：チケットID
++ ticket_one_raw.sh
+    - 1チケットの内容をの代表的な項目をJSON形式で出力
+        - 第1引数：チケットID
++ ticket_project_list_all.sh
+    - サンプルプロジェクトのチケットをすべて表示
++ ticket_project_list_completed.sh
+    - サンプルプロジェクトのチケットでステータスが完了のものをすべて表示
++ ticket_project_list_in_progress.sh
+    - サンプルプロジェクトのチケットでステータスが進行中のものをすべて表示
++ ticket_project_list_new_open.sh
+    - サンプルプロジェクトのチケットでステータスが新規のものをすべて表示
+
+
+### 更新
++ ticket_status_change_to_in_progress.sh
+    - 指定チケットのステータスを完了に変更する
+        - 第1引数：チケットID
+        - 更新対象：
+            - ステータス
+            - コメント
+
+### 内部関数（共通処理）
++ _ticket_one.sh
+    - 1チケットの情報を取得
++ _ticket_project_list.sh
+    - チケット一覧を取得
++ _ticket_status_change.sh
+    - チケットのステータスを更新
+
+### env.sh
++ env.shにはRedmineの情報を記載する。
++ 現在の記載はサンプル
+    - 本来API_ACCESS_KEYはgitに保存してはいけない。
+    - ローカルネットワークで外部からはアクセスできないのでサンプルとして今回は保存した。
